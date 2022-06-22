@@ -2,23 +2,103 @@
 <form class="row g-3">
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4" placeholder="Enter your email">
+    <input
+      required
+      pattern=""
+      ngModel
+      name="email"
+      #email="ngModel"
+      (change)="log(email)"
+      type="email"
+      class="form-control"
+      id="inputEmail4"
+      placeholder="Enter your email"
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="email.touched && !email.valid"
+    >
+      <!--Email is required-->
+      <div *ngIf="email.errors?.required">Email is required</div>
+      <div *ngIf="email.errors?.pattern">
+        Email is incorrect
+      </div>
+    </div>
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword4" placeholder="Enter password">
+    <input
+    required
+      ngModel
+      name="password"
+      #password="ngModel"
+      type="password"
+      class="form-control"
+      id="inputPassword4"
+      placeholder="Enter password"
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="password.touched && !password.valid">
+      Password is required
+      </div>
   </div>
   <div class="col-12">
     <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    <input
+      required
+      ngModel
+      name="inputAddress"
+      #inputAddress="ngModel"
+      type="inputAddress"
+      type="text"
+      class="form-control"
+      id="inputAddress"
+      placeholder="1234 Main St"
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="inputAddress.touched && !inputAddress.valid">
+       Input field is Empty
+      </div>
   </div>
   <div class="col-12">
     <label for="inputAddress2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    <input
+    required
+    ngModel
+    name="inputAddress2"
+    #inputAddress2="ngModel"
+    type="inputAddress2"
+      type="text"
+      class="form-control"
+      id="inputAddress2"
+      placeholder="Apartment, studio, or floor"
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="inputAddress2.touched && !inputAddress2.valid">
+       Input field is Empty
+      </div>
   </div>
   <div class="col-md-6">
     <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity">
+    <input
+    required
+      ngModel
+      pattern="[a-zA-Z][a-zA-Z ]+"
+      name="inputCity"
+      #inputCity="ngModel"
+      type="inputCity"
+    type="text" class="form-control" id="inputCity" />
+    <div
+    class="alert alert-danger"
+    *ngIf="inputCity.touched && !inputCity.valid"
+  >
+    <!--Email is required-->
+    <div *ngIf="inputCity.errors?.required">Input field is required</div>
+    <div *ngIf="inputCity.errors?.pattern">City don't exist
+    </div></div>
   </div>
   <div class="col-md-4">
     <label for="inputState" class="form-label">State</label>
@@ -55,15 +135,22 @@
   </div>
   <div class="col-md-2">
     <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
+    <input
+    required
+      ngModel
+      pattern="^\d{5}(?:\d{2})?$"
+      name="inputZip"
+      #inputZip="ngModel"
+      type="inputZip"
+    type="text" class="form-control" id="inputZip" />
+    <div
+      class="alert alert-danger"
+      *ngIf="inputZip.touched && !inputZip.valid"
+    >
+      <!--Email is required-->
+      <div *ngIf="inputZip.errors?.required">Input field is required</div>
+      <div *ngIf="inputZip.errors?.pattern">Zip is incorrect
+      </div></div>
   </div>
   <div class="col-12">
     <button type="submit" class="btn btn-primary">Submit</button>

@@ -4,3 +4,6 @@
   padding:0%;
   font-family: 'Times New Roman', Times, serif;
 }
+.form-control.ng-touched.ng-invalid{
+  border: 2px solid red;
+}
